@@ -110,14 +110,10 @@ input[type="submit"] {
 	border-radius: 4px;
 	width: 25%;
 	display: inline-block;
-	transition: all .4s ease-in-out;
 	cursor: pointer;
-	&:hover {
-		background: $dark;
-	}
+	
 }
 
-::-webkit-input-placeholder { color: #C0B283; }
 	
 .links {
 	display: block;
@@ -169,7 +165,6 @@ input[type="submit"] {
 	border-radius: 4px;
 	width: 25%;
 	display: inline-block;
-	transition: all .4s ease-in-out;
 	cursor: pointer;
 	color: #C0B283;
 	text-align: center;
