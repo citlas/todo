@@ -15,14 +15,6 @@
  */
 
 
-
-* {
-	box-sizing: border-box;
-}
-html {
-  height: 100%;
-}
-
 body {
  	height: 100%;
   background: #F4F4F4;
@@ -195,12 +187,11 @@ input[type="submit"] {
 	padding: 1em 0;
 }
 
-a {
-	color: #C0B283;
-	
+.glyphicon {
+	color: #C0B283;	
 }
 
-i:hover {
+.glyphicon:hover {
 	font-size: 2em;
 	color: black;		
 	background-color: #F4F4F4;
