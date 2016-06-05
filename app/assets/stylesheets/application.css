@@ -172,10 +172,6 @@ input[type="submit"] {
 	transition: all .4s ease-in-out;
 	cursor: pointer;
 	color: #C0B283;
-	&:hover {
-		background: $dark;
-		color: white;
-	}
 	text-align: center;
 	width: 50%;
 	max-width: 750px;
