@@ -1,5 +1,5 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_item, only: [:show, :edit, :update, :destroy, :complete]
 
   # GET /todo_items
   # GET /todo_items.json
@@ -62,6 +62,13 @@ class TodoItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def complete
+    
+    @todo_item.update_attribute(:completed_at, Time.now)
+    redirect_to todo_items_url, notice: 'Todo item completed'   
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
