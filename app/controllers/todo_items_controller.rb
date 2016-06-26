@@ -1,10 +1,11 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy, :complete]
+  before_filter :authenticate_user!
 
   # GET /todo_items
   # GET /todo_items.json
   def index
-    @todo_items = TodoItem.all
+    @todo_items = current_user.todo_items
     @todo_item = TodoItem.new
   end
 
@@ -26,17 +27,20 @@ class TodoItemsController < ApplicationController
   # POST /todo_items.json
   def create
     @todo_item = TodoItem.new(todo_item_params)
+@todo_item.user= current_user
+if (user_signed_in? && (current_user.id == @todo_item.user_id))
 
     respond_to do |format|
       if @todo_item.save
         format.html { redirect_to root_path, notice: 'Todo item was successfully created.' }
         format.json { render :show, status: :created, location: @todo_item }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @todo_item.errors, status: :unprocessable_entity }
       end
     end
-    
+  end  
   end
 
   # PATCH/PUT /todo_items/1
@@ -80,4 +84,7 @@ class TodoItemsController < ApplicationController
     def todo_item_params
       params.require(:todo_item).permit(:content)
     end
+
+
+
 end
