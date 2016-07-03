@@ -1,11 +1,11 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy, :complete]
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   # GET /todo_items
   # GET /todo_items.json
   def index
-    @todo_items = current_user.todo_items
+    @todo_items = TodoItem.all
     @todo_item = TodoItem.new
   end
 
@@ -27,8 +27,8 @@ class TodoItemsController < ApplicationController
   # POST /todo_items.json
   def create
     @todo_item = TodoItem.new(todo_item_params)
-@todo_item.user= current_user
-if (user_signed_in? && (current_user.id == @todo_item.user_id))
+#@todo_item.user= current_user
+#if (user_signed_in? && (current_user.id == @todo_item.user_id))
 
     respond_to do |format|
       if @todo_item.save
@@ -39,7 +39,7 @@ if (user_signed_in? && (current_user.id == @todo_item.user_id))
         format.html { render :new }
         format.json { render json: @todo_item.errors, status: :unprocessable_entity }
       end
-    end
+   # end
   end  
   end
 
